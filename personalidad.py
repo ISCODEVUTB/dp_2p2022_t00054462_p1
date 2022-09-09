@@ -23,6 +23,9 @@ class Personalidad(Caracterizacion):
     def set_character(self, character: Character) -> None:
         self.character = character
 
+    def change_power(self) -> str:
+        return f'Decrease power of {self.name}'
+
     def to_string(self) -> str:
         caracterization_info = super().to_string()
         return caracterization_info + f', personality_type: {self.personality_type}, character: {self.character}'

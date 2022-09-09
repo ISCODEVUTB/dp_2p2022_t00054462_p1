@@ -31,10 +31,13 @@ class Alien(Personaje):
     def defend(self) -> str:
         return f'defend -> Alien'
 
-    def add(self, characterizations: Caracterizacion) -> bool:
+    def add(self, characterization: Caracterizacion) -> bool:
         try:
-            self.characterizations.append(characterizations)
-            return bool
+            if(isinstance(characterization, Caracterizacion)):
+                self.characterizations.append(characterization)
+                return True
+            else:
+                raise ValueError
         except Exception:
             return False
 
@@ -47,8 +50,11 @@ class Alien(Personaje):
 
     def enemigo(self, enemigo: Personaje):
         try:
-            self.enemigo = enemigo
-            return bool
+            if(isinstance(enemigo, Personaje)):
+                self.characterizations.append(enemigo)
+                return True
+            else:
+                raise ValueError
         except Exception:
             return False
 

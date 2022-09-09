@@ -4,7 +4,7 @@ class Debilidades(Caracterizacion):
     trigger: str
     duration: float
 
-    def __init__(self, name: str, origen: str, duration: str, trigger: float):
+    def __init__(self, name: str, origen: str, duration: float, trigger: str):
         super().__init__(name, origen)
         self.duration = duration
         self.trigger = trigger
