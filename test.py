@@ -10,6 +10,8 @@ from enumerations import Genre, Morality, Identity, Personality, Character
 
 class TestNewLigue(unittest.TestCase):
 
+    DEFAULT_IDIOM = "español"
+
     personaje_superhumano = Superhumano("La viuda negra", "Natasha", 1.72, 68.4, Genre.FEMALE, Morality.HERO, Identity.PUBLIC)
     personaje_humano = Humano("El joker", "Unknown", 1.78, 73.0, Genre.MALE, "Blanco", "Marrones", "Negro")
     personaje_alien = Alien("Quick Silver", "Pietro", "1.84", "85", Genre.MALE, "Jupiter")
@@ -30,7 +32,7 @@ class TestNewLigue(unittest.TestCase):
         self.assertTrue(self.personaje_superhumano.liga("Los vengadores"))
 
     def test_speak_superhumano(self):
-        result = self.personaje_superhumano.speak('español', 'yo los protegere')
+        result = self.personaje_superhumano.speak(self.DEFAULT_IDIOM, 'yo los protegere')
         self.assertEqual(result, 'El personaje dice: yo los protegere en el idioma español')
 
     def test_move_superhumano(self):
@@ -56,7 +58,7 @@ class TestNewLigue(unittest.TestCase):
         self.assertTrue(self.personaje_humano.liga("Starlord group"))
 
     def test_speak_humano(self):
-        result = self.personaje_humano.speak('español', 'este es mi planeta')
+        result = self.personaje_humano.speak(self.DEFAULT_IDIOM, 'este es mi planeta')
         self.assertEqual(result, 'El personaje dice: este es mi planeta en el idioma español')
 
     def test_move_humano(self):
@@ -80,9 +82,12 @@ class TestNewLigue(unittest.TestCase):
 
     def test_liga_alien(self):
         self.assertTrue(self.personaje_alien.liga("Los 4 fantasticos"))
+    
+    def test_back_home(self):
+        self.assertEqual(self.personaje_alien.back_home(), 'Quick Silver va de regreso a Jupiter')
 
     def test_speak_alien(self):
-        result = self.personaje_alien.speak('español', 'vengo en paz')
+        result = self.personaje_alien.speak(self.DEFAULT_IDIOM, 'vengo en paz')
         self.assertEqual(result, 'El personaje dice: vengo en paz en el idioma español')
 
     def test_move_alien(self):
@@ -108,7 +113,7 @@ class TestNewLigue(unittest.TestCase):
         self.assertTrue(self.personaje_artificial.liga("Los vengadores"))
 
     def test_speak_artificial(self):
-        result = self.personaje_artificial.speak('español', 'estoy vivo')
+        result = self.personaje_artificial.speak(self.DEFAULT_IDIOM, 'estoy vivo')
         self.assertEqual(result, 'El personaje dice: estoy vivo en el idioma español')
 
     def test_move_artificial(self):
@@ -138,6 +143,25 @@ class TestNewLigue(unittest.TestCase):
         result = self.personalidad.change_power()
         self.assertEqual(result, 'Decrease power for arrogancia')
 
+    # Test to_string methods
+
+    def test_to_string_superhumano(self):
+        result = self.personaje_superhumano.to_string()
+        wait_result = f'alias: La viuda negra, real_name: Natasha, genre: {Genre.FEMALE}, height: 1.72, weight: 68.4, morality: {Morality.HERO}, identity: {Identity.PUBLIC}'
+        self.assertEqual(result, wait_result)
+
+    def test_to_string_humano(self):
+        result = self.personaje_humano.to_string()
+        wait_result = f'alias: El joker, real_name: Unknown, genre: {Genre.MALE}, height: 1.78, weight: 73.0, race: Blanco, color eye: Marrones, color hair: Negro'
+        self.assertEqual(result, wait_result)
+
+    def test_to_string_alien(self):
+        result = self.personaje_alien.to_string()
+        wait_result = f'alias: Quick Silver, real_name: Pietro, genre: {Genre.MALE}, height: 1.84, weight: 85, planet: Jupiter'
+
+    def test_to_string_alien(self):
+        result = self.personaje_artificial.to_string()
+        wait_result = f'alias: Ultron, real_name: Ultron, genre: {Genre.MALE}, height: 1.90, weight: 80, creator: Tony Stark'
 
 if __name__ == '__main__':
     unittest.main()
