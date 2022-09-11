@@ -7,7 +7,7 @@ class Alien(Personaje):
     planet: str
 
     def __init__(self, alias: str, real_name: str, height: float, weight: float, genre: Genre, planet: str, characterizations = [], liga: str = '', enemigo=None):
-        super().__init__(alias, real_name, type, height, weight, genre)
+        super().__init__(alias, real_name, height, weight, genre, characterizations, liga, enemigo)
         self.planet = planet
 
     def get_planet(self) -> str:

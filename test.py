@@ -158,10 +158,12 @@ class TestNewLigue(unittest.TestCase):
     def test_to_string_alien(self):
         result = self.personaje_alien.to_string()
         wait_result = f'alias: Quick Silver, real_name: Pietro, genre: {Genre.MALE}, height: 1.84, weight: 85, planet: Jupiter'
+        self.assertEqual(result, wait_result)
 
-    def test_to_string_alien(self):
+    def test_to_string_artificial(self):
         result = self.personaje_artificial.to_string()
         wait_result = f'alias: Ultron, real_name: Ultron, genre: {Genre.MALE}, height: 1.90, weight: 80, creator: Tony Stark'
+        self.assertEqual(result, wait_result)
 
 if __name__ == '__main__':
     unittest.main()
