@@ -14,7 +14,7 @@ class Armas(Caracterizacion):
         self.set_stricking_power = striking_power
 
     def change_power(self) -> str:
-        return f'Increase power of {self.name}'
+        return f'Increase power for {self.name}'
 
     def to_string(self) -> str:
         caracterizacion_info = super().to_string() 
