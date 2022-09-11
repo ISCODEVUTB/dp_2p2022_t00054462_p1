@@ -22,11 +22,11 @@ class Debilidades(Caracterizacion):
         self.duration = duration
 
     def change_power(self) -> str:
-        return f'Decrease power'
+        return f'Decrease power of {self.name}'
 
     def to_string(self) -> str:
-        caracyerization_info = super().to_string()
-        return caracyerization_info + f', trigger: {self.trigger}, duration: {self.duration}'
+        caracterizacion_info = super().to_string()
+        return caracterizacion_info + f', trigger: {self.trigger}, duration: {self.duration}'
     
 
     

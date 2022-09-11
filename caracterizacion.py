@@ -27,6 +27,5 @@ class Caracterizacion(ABC):
     def change_power(self) -> str:
         pass
 
-    @abstractmethod
     def to_string(self) -> str:
-        pass
+        return f'name: {self.name}, origen: {self.origen}'

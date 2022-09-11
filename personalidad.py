@@ -27,8 +27,8 @@ class Personalidad(Caracterizacion):
         return f'Decrease power of {self.name}'
 
     def to_string(self) -> str:
-        caracterization_info = super().to_string()
-        return caracterization_info + f', personality_type: {self.personality_type}, character: {self.character}'
+        caracterizacion_info = super().to_string()
+        return caracterizacion_info + f', personality_type: {self.personality_type}, character: {self.character}'
 
 
     
