@@ -1,3 +1,4 @@
 __pycache__
 .scannerwork
 .pytest_cache
+coverage.xml
