@@ -20,17 +20,17 @@ class PersonajeBuilder:
         self.personaje = Personaje(self.alias,self.real_name, self.height, self.weight, self.genre, self.characterizations, self.liga, self.enemigo)
 
     @abstractmethod
-    def build_move():
+    def build_move(self):
         pass
     
     @abstractmethod
-    def build_jump():
+    def build_jump(self):
         pass
     
     @abstractmethod
-    def build_attack():
+    def build_attack(self):
         pass
 
     @abstractmethod
-    def build_defend():
+    def build_defend(self):
         pass
