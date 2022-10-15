@@ -127,14 +127,6 @@ class TestNewLigue(unittest.TestCase):
         wait_result = f'alias: La viuda negra, real_name: Natasha, genre: {Genre.FEMALE}, height: 1.72, weight: 68.4'
         self.assertEqual(completed_superhumano.to_string(), wait_result)
 
-    def test_get_methods(self):
-        personaje_director = PersonajeDirector()
-        personaje_director.set_personaje_builder(self.superhumano_builder)
-        personaje_director.construct_personaje()
-        completed_superhumano = personaje_director.get_personaje()
-        wait_result = f'alias: La viuda negra, real_name: Natasha, genre: {Genre.FEMALE}, height: 1.72, weight: 68.4'
-        self.assertEqual(completed_superhumano.to_string(), wait_result)
-
 
 
 if __name__ == '__main__':
