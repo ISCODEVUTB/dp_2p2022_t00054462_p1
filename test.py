@@ -84,28 +84,7 @@ class TestNewLigue(unittest.TestCase):
 
         ])
 
-    #Test Build alien
-    def test_build_alien(self):
-        personaje_director = PersonajeDirector()
-        personaje_director.set_personaje_builder(self.alien_builder)
-        personaje_director.construct_personaje()
-        completed_alien = personaje_director.get_personaje()
-
-        self.assertEqual([
-            completed_alien.move,
-            completed_alien.attack, 
-            completed_alien.defend,
-            completed_alien.jump
-        ],
-        [
-            "move -> Alien",
-            "attack -> Alien",
-            "defend -> Alien",
-            "jump -> Alien"
-
-        ])
-
-    #Test Build alien
+    #Test Build artificial
     def test_build_artificial(self):
         personaje_director = PersonajeDirector()
         personaje_director.set_personaje_builder(self.artificial_builder)
