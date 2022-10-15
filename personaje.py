@@ -1,9 +1,8 @@
-from abc import abstractmethod
+from IFicha import IFicha
 from caracterizacion import Caracterizacion
 from enumerations import Genre
 
-
-class Personaje():
+class Personaje(IFicha):
     alias: str
     real_name: str
     genre: Genre
@@ -13,6 +12,10 @@ class Personaje():
     liga = ''
     enemigo = None
 
+    move: str
+    jump: str
+    attack: str
+    defend: str
 
     def __init__(self, alias:str, real_name:str, height:float, weight:float, genre: Genre, characterizations = [], liga: str = '', enemigo = None):
         self.alias = alias
@@ -51,27 +54,44 @@ class Personaje():
     def set_weight(self, weight:float) -> None:
         self.weight = weight
 
-    def speak(self, idiom: str, script: str) -> str:
-        """
-        Recibe el nombre del idioma en que hablara el personaje y lo que debe decir.
-        """
-        return "El personaje dice: " + script + " en el idioma " + idiom
+    def add(self, characterization: Caracterizacion) -> bool:
+        try:
+            if(isinstance(characterization, Caracterizacion)):
+                self.characterizations.append(characterization)
+                return True
+            else:
+                raise ValueError
+        except Exception:
+            return False
 
-    @abstractmethod
-    def move(self) -> str:
-        pass
+    def liga(self, liga:str) -> bool:
+        try:
+            self.liga = liga
+            return bool
+        except Exception:
+            return False
 
-    @abstractmethod
-    def jump(self) -> str:
-        pass
+    def enemigo(self, enemigo):
+        try:
+            if(isinstance(enemigo, Personaje)):
+                self.characterizations.append(enemigo)
+                return True
+            else:
+                raise ValueError
+        except Exception:
+            return False
 
-    @abstractmethod
-    def attack(self) -> str:
-        pass
+    def set_move(self, move:str) -> str:
+        self.move = move
 
-    @abstractmethod
-    def defend(self) -> str:
-        pass
+    def set_jump(self, jump: str) -> str:
+        self.jump = jump
+
+    def set_attack(self, attack: str) -> str:
+        self.attack = attack
+
+    def set_defend(self, defend: str) -> str:
+        self.defend = defend
 
     def to_string(self) -> str:
         return f'alias: {self.alias}, real_name: {self.real_name}, genre: {self.genre}, height: {self.height}, weight: {self.weight}'
